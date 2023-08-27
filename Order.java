@@ -26,14 +26,15 @@ public class Order {
     }
 
     public String toString(){
-
-
-        System.out.println("Order number: " + getId() + ready);
-        for (int i = 0; i < items.length; i++){
-            System.out.println(items[i]);
+        if (items.length == 1){
+            return "Order number: " + getId() + "\n" + ready + "\n" + items[0];
         }
-
-        return "Order number:" + getId() + ready
+        else if (items.length == 2){
+            return "Order number: " + getId() + "\n" + ready + "\n" + items[0] + "\n" + items[1];
+        }
+        else{
+            return "Order number: " + getId() + "\n" + ready + "\n" + items[0] + "\n" + items[1] + "\n" + items[2];
+        }
     }
 
     
