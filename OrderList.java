@@ -27,7 +27,7 @@ public class OrderList {
             if (orderList[i].order_id == id) {
                 orderList[i] = null;
             }
-        }    
+        }
     }
 
     public void readyOrder(int id) {
@@ -40,22 +40,52 @@ public class OrderList {
     }
 
     private void sortOrder() {
+        int swap = 0;
+        while (swap == 0) {
+            swap = 1;
+            for (int i = 1; i < orderList.length; i++) {
+                if (orderList[i].order_id < orderList[i].order_id) {
+                    swap = 0;
+                    int temp = orderList[i].order_id;
+                    orderList[i].order_id = orderList[i].order_id;
+                    orderList[i].order_id = temp;
+                }
 
+            }
+
+
+        }
     }
 
     public String printOrder(int id) {
-        //def not working
         for (int i = 0; i< orderList.length; i++) {
             if (orderList[i].order_id == id) {
-                //return to string shit;
+                return orderList[i].toString();
             }
         }
     }
 
     public String printOrders() {
+    ///wtff
+        String[] mainList = sortOrder();
+        String[] ready = new String[orderList.length];
+        String[] preparing = new String[orderList.length];
+        int amtInReady = 0;
+        int amtInPreparing = 0;
+
+        for(int i = 0; i< mainList.length; i++){
+            if (mainList[i].ready = true){
+                ready[amtInReady] = mainList[i];
+                amtInReady++;
+            }
+            else if (mainList[i].ready = false);
+                preparing[amtInPreparing] = mainList[i];
+                amtInPreparing++;
+        }
+
+
 
     }
-        
+
 
 }
-
