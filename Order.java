@@ -1,20 +1,20 @@
 public class Order {
-    private int order_id;
+    private int orderid;
     private static int id_list = 1;
     public boolean ready;
     public String[] items;
 
-    id_assign(){
-        order_id = id_list++;
+    Order(){
+        setId(id_list++);
 
         ready = false;
         items = new String[3];
 
 
     }
-
-    id_assign(String[] passed){
-        order_id = id_list++;
+//need setter in here
+    Order(String[] passed){
+        setId(id_list++);
 
         ready = false;
         items = passed;
@@ -22,7 +22,11 @@ public class Order {
     }
 
     public int getId(){
-        return order_id;
+        return orderid;
+    }
+
+    public void setId(int id){
+        orderid = id_list++;
     }
 
     public String toString(){
@@ -37,5 +41,5 @@ public class Order {
         }
     }
 
-    
+
 }

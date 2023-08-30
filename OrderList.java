@@ -1,5 +1,5 @@
 public class OrderList {
-    private Order[] orderList = new Order[1];
+    private Order[] orderList;
 
     public void addOrder(Order order) {
         int position = -1;
@@ -24,7 +24,7 @@ public class OrderList {
 
     public void removeOrder(int id) {
         for (int i = 0; i< orderList.length; i++) {
-            if (orderList[i].order_id == id) {
+            if (orderList[i].getId() == id) {
                 orderList[i] = null;
             }
         }
@@ -32,23 +32,23 @@ public class OrderList {
 
     public void readyOrder(int id) {
         for (int i = 0; i< orderList.length; i++) {
-            if (orderList[i].order_id == id) {
+            if (orderList[i].getId() == id) {
                 orderList[i].ready = true;
             }
 
         }
     }
-
+//look at this again to understand instance
     private void sortOrder() {
         int swap = 0;
         while (swap == 0) {
             swap = 1;
             for (int i = 1; i < orderList.length; i++) {
-                if (orderList[i].order_id < orderList[i].order_id) {
+                if (orderList[i].getId() < orderList[i - 1].getId()) {
                     swap = 0;
-                    int temp = orderList[i].order_id;
-                    orderList[i].order_id = orderList[i].order_id;
-                    orderList[i].order_id = temp;
+                    Order temp = orderList[i];
+                    orderList[i] = orderList[i - 1];
+                    orderList[i - 1] = temp;
                 }
 
             }
@@ -57,33 +57,38 @@ public class OrderList {
         }
     }
 
+
+
+
     public String printOrder(int id) {
+        sortOrder();
         for (int i = 0; i< orderList.length; i++) {
-            if (orderList[i].order_id == id) {
+            if (orderList[i].getId() == id) {
                 return orderList[i].toString();
             }
         }
+        return "fuck shit";
     }
 
     public String printOrders() {
-    ///wtff
-        String[] mainList = sortOrder();
+
+        sortOrder();
         String[] ready = new String[orderList.length];
         String[] preparing = new String[orderList.length];
         int amtInReady = 0;
         int amtInPreparing = 0;
 
-        for(int i = 0; i< mainList.length; i++){
-            if (mainList[i].ready = true){
-                ready[amtInReady] = mainList[i];
+        for(int i = 0; i< orderList.length; i++){
+            if (orderList[i].ready){
+                ready[amtInReady] = String.valueOf(orderList[i].getId());
                 amtInReady++;
             }
-            else if (mainList[i].ready = false);
-                preparing[amtInPreparing] = mainList[i];
-                amtInPreparing++;
+            else if (!orderList[i].ready);
+            preparing[amtInPreparing] = String.valueOf(orderList[i].getId());
+            amtInPreparing++;
         }
 
-
+        return "Ready\n" + ready + "Preparing\n" + preparing;
 
     }
 
