@@ -6,12 +6,12 @@ public class Driver {
 
 
     public static void main(String[] args){
-
+        OrderList restaurantOrders = new OrderList();
         int choice;
         String newChoice;
 
 
-//fix this shittttttttttttttttttttttttttttttttttt fuck
+
         do{
 
             System.out.println("1- Create order\n" +
@@ -22,13 +22,14 @@ public class Driver {
                     "6- Exit");
             Scanner x = new Scanner (System.in);
             choice = x.nextInt();
-
+            x.nextLine();
             if (choice == 1){
                 String[] array = new String[3];
                 for(int i = 0; i < 3; i++) {
+                    System.out.println("Enter item " + (i + 1) + ": ");
                     newChoice = x.nextLine();
                     array[i] = newChoice;
-                    System.out.println("Enter item " + (i + 1) + ": ");
+
 
                 }
 
@@ -53,11 +54,11 @@ public class Driver {
 
             else if (choice == 4){
                 System.out.println("Enter item id:");
-                restaurantOrders.printOrder(x.nextInt());
+                System.out.println(restaurantOrders.printOrder(x.nextInt()));
             }
 
             else if (choice == 5){
-                restaurantOrders.printOrders();
+                System.out.println(restaurantOrders.printOrders());
             }
 
 
