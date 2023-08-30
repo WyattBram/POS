@@ -5,16 +5,16 @@ public class Order {
     public String[] items;
 
     Order(){
-        setId(id_list++);
+        orderid = id_list++;
 
         ready = false;
         items = new String[3];
 
 
     }
-//need setter in here
+    //need setter in here
     Order(String[] passed){
-        setId(id_list++);
+        orderid = id_list++;
 
         ready = false;
         items = passed;
@@ -25,21 +25,27 @@ public class Order {
         return orderid;
     }
 
-    public void setId(int id){
-        orderid = id_list++;
-    }
 
+    @Override
     public String toString(){
+        String reasdd = "Not ready";
+        if(ready){
+            reasdd = "Ready";
+        }
         if (items.length == 1){
-            return "Order number: " + getId() + "\n" + ready + "\n" + items[0];
+            return "Order number: " + getId() + "\n" + reasdd + "\n" + items[0];
         }
         else if (items.length == 2){
-            return "Order number: " + getId() + "\n" + ready + "\n" + items[0] + "\n" + items[1];
+            return "Order number: " + getId() + "\n" + reasdd + "\n" + items[0] + "\n" + items[1];
         }
         else{
-            return "Order number: " + getId() + "\n" + ready + "\n" + items[0] + "\n" + items[1] + "\n" + items[2];
+            return "Order number: " + getId() + "\n" + reasdd + "\n" + items[0] + "\n" + items[1] + "\n" + items[2];
         }
     }
+
+
+}
+
 
 
 }
